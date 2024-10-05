@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Entity
 @Data
 @Table(name = "coordinates")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Coordinates {
+public class Coordinates implements Serializable {
 
     //    @EmbeddedId
 //    private CoordinatesId coordinates;

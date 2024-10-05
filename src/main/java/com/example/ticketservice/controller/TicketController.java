@@ -5,8 +5,9 @@ import com.example.ticketservice.service.CoordinatesService;
 import com.example.ticketservice.service.LocationService;
 import com.example.ticketservice.service.PersonService;
 import com.example.ticketservice.service.TicketService;
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.NotActiveException;
 
 @RestController
-@RequestMapping("${api.endpoints.base-url}/tickets")
+//@RequestMapping("${api.endpoints.base-url}/tickets")
+@RequestMapping("qwe/")
 @AllArgsConstructor
 public class TicketController {
     private final TicketService ticketService;
@@ -23,12 +25,18 @@ public class TicketController {
     private final LocationService locationService;
 
 
-//    @GetMapping
+//    @GetMapping(value = "hello", produces = MediaType.APPLICATION_XML_VALUE)
 //    public ResponseEntity<?> getAllTickets() {
+//        return ResponseEntity.status(200).body("hello");
 //    }
 
+    @GetMapping(value = "hello", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String getAllTickets() {
+        return "hello";
+    }
+
     @PostMapping
-    public ResponseEntity<?> saveTicket(@Valid @RequestBody TicketDto ticketDto) throws NotActiveException {
+    public ResponseEntity<?> saveTicket(@RequestBody TicketDto ticketDto) throws NotActiveException {
 
         System.out.println(ticketDto);
         System.out.println(ticketDto.getPersonDto());
